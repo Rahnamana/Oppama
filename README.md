@@ -1,1 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Blog d'actualité, galerie photo, abonnement et articles utiles sur la technologie.">
+  <meta name="keywords" content="blog, technologie, galerie, abonnement, YouTube, actualité">
+  <meta name="author" content="Oppama">
+  <title>Oppama Blog - Infos et Abonnement</title>
 
+  <!-- Google AdSense (à activer quand accepté) -->
+ <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+     crossorigin="anonymous"></script>-->
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("HRNJZr1zfS3tGLxFq");
+    })();
+  </script>
+
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: linear-gradient(to right, #a8edea, #fed6e3, #c3f0ca);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #3498db;
+    }
+
+    nav a {
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background: #2980b9;
+    }
+
+    @media(max-width: 700px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .gallery-img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ddd;
+      margin-top: 40px;
+    }
+
+    h2 {
+      color: #1e3a5f;
+    }
+  
+.blog-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.blog-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+}
+
+.arrow {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(90deg);
+}
+
+.blog-content {
+  margin-top: 10px;
+  display: none;
+  color: #555;
+}
+</style>
+</head>
+<body>
+
+  <header>
+    <h1><img src="https://i.imgur.com/I7ZHxF2.jpeg" class="gallery-img" alt="Logo officiel du site Oppama"></h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="main-nav">
+    <a href="#home">Accueil</a>
+    <a href="#subscribe">S'abonner</a>
+    <a href="#legal">Mentions</a>
+  </nav>
+
+  <div class="container">
+    <section style="background: linear-gradient(135deg, #a7d7ff, #d5b3ff, #b3ffd1); padding: 40px 20px; border-radius: 20px; margin: 30px auto; max-width: 900px; color: #333; font-family: 'Segoe UI', sans-serif;">
+      <div style="background-color: rgba(255,255,255,0.95); padding: 30px; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1); text-align: left;">
+        <h1 style="font-size: 2em; color: #4a148c; display: block; text-align: center;"> Bienvenue sur <strong >Oppama</strong></h1>
+        <h2 style="font-size: 1.4em; color: #00695c; display: block; text-align: center;">Le blog qui élargit vos horizons 🌟</h2>
+    
+        <p><strong style="display: block; text-align: center;">Oppama</strong></p> <p style="display: block; text-align: center;"> est un site de blog unique qui rassemble une richesse de contenus pour tous les âges : enfants, jeunes et adultes. Nous croyons que la curiosité n’a pas d’âge et que chaque jour est une occasion d’apprendre quelque chose de nouveau.</p>
+    
+        <p><strong style="display: block; text-align: center;">Ce que vous trouverez sur Oppama :</strong><br>
+          – Articles éducatifs pour les enfants, rédigés de manière ludique et simple.<br>
+          – Contenus inspirants et informatifs pour les jeunes.<br>
+          – Réflexions profondes, conseils pratiques et sujets variés pour les adultes.
+        </p>
+    
+        <p><strong style="display: block; text-align: center;">Notre mission :</strong></p><p style="display: block; text-align: center;">Élargir les connaissances, éveiller la curiosité, et créer un espace où chaque lecteur peut apprendre, réfléchir et évoluer.</p>
+    
+        <p><strong style="display: block; text-align: center;">Pourquoi choisir Oppama ?</strong><br>
+          – Thèmes variés (science, art, société, technologie, etc.)<br>
+          – Un langage accessible à tous<br>
+          – Un contenu enrichissant et respectueux
+        </p>
+    
+        <p style="display: block; text-align: center;"><em>Oppama, c’est bien plus qu’un blog — c’est une passerelle vers la connaissance, pour petits et grands.<br>
+        Explorez, découvrez et grandissez avec nous !</em></p>
+    
+        <!-- Boutons -->
+        <div style="margin-top: 30px; display: block; text-align: center;">
+         
+          <a href="mailto:oppamablog@gmail.com" style="text-decoration: none; padding: 12px 25px; background-color: #00695c; color: white; border-radius: 8px;">📧 Nous contacter</a>
+        </div>
+      </div>
+    </section>
+    
+  <!-- Blog Déroulant -->
+  <section id="blog">
+  <h2>📚 Articles Populaires</h2>
+  <div class="blog-container">
+  <div class="blog-header" onclick="toggleContent(this)">
+  <span class="blog-title">💡 L'énergie nucléaire : une solution d'avenir ?</span>
+  <span class="arrow">▶</span>
+  </div>
+  <div class="blog-content">
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/SMR_Nuclear_Reactor_Concept.svg/1200px-SMR_Nuclear_Reactor_Concept.svg.png" 
+           alt="Schéma conceptuel d’un petit réacteur modulaire SMR">
+      <figcaption>Schéma conceptuel d’un petit réacteur modulaire (SMR) - Source : Wikimedia Commons</figcaption>
+    </figure>
+
+    <section>
+      <h2>🌍 Pourquoi penser à l'énergie nucléaire aujourd’hui ?</h2>
+      <p>
+       &emsp; Face aux défis climatiques et à la demande croissante en électricité, le monde cherche des solutions énergétiques à la fois durables, fiables et faibles en émissions de carbone.
+        L’énergie nucléaire, souvent controversée, revient aujourd’hui au centre des discussions grâce à une innovation prometteuse : les <strong>SMR (Small Modular Reactors)</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>⚙️ Qu’est-ce qu’un SMR ?</h2>
+      <p>&emsp;
+        Les <strong>petits réacteurs modulaires</strong> sont des centrales nucléaires compactes conçues pour être fabriquées en usine, transportées en pièces, puis assemblées sur site.
+        Contrairement aux réacteurs traditionnels, leur taille réduite permet plus de flexibilité, de rapidité de construction, et des coûts mieux maîtrisés.
+      </p>
+    </section>
+
+    <section>
+      <h2>✅ Les avantages des SMR</h2>
+      <ul>
+        <li><strong>Sécurité renforcée :</strong> conception passive, réduction des risques majeurs.</li>
+        <li><strong>Moins encombrants :</strong> s’adaptent aux zones isolées ou peu desservies.</li>
+        <li><strong>Moins d’émissions :</strong> une énergie bas-carbone qui lutte contre le réchauffement climatique.</li>
+        <li><strong>Déploiement rapide :</strong> grâce à la fabrication modulaire en usine.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🌐 Une solution adaptée aux pays en développement ?</h2>
+      <p>&emsp;
+        Dans des pays comme <strong>Madagascar</strong>, où l’accès à une électricité stable est encore limité, les SMR pourraient jouer un rôle clé. Leur taille compacte et leur faible besoin en infrastructure permettent un <strong>déploiement local</strong> pour alimenter des villes, des hôpitaux ou des zones industrielles sans grands réseaux.
+      </p>
+    </section>
+
+    <section>
+      <h2>🔍 Conclusion : vers une transition nucléaire responsable</h2>
+      <p>&emsp;
+        L’énergie nucléaire n’est pas une solution miracle, mais avec les <strong>SMR</strong>, elle devient plus souple, plus sûre, et plus adaptée aux besoins de demain.
+        Investir dans cette technologie, c’est préparer une <strong>transition énergétique intelligente</strong> qui associe innovation, souveraineté énergétique et lutte contre le changement climatique.
+      </p>
+    </section>  </div>
+  </div>
+  <div class="blog-container">
+  <div class="blog-header" onclick="toggleContent(this)">
+  <span class="blog-title">🌿 Nucléaire vs renouvelable : que choisir ?</span>
+  <span class="arrow">▶</span>
+  </div>
+  <div class="blog-content">
+    <section id="blog-nucleaire-renouvelable" aria-label="Article Nucléaire vs Renouvelable">
+      <h2>Que Choisir pour un Avenir Durable ?</h2>
+    
+      <p><strong>Face à la crise climatique, une question revient souvent :</strong> quelle est la meilleure solution énergétique pour notre avenir ? Faut-il investir dans le nucléaire ou miser entièrement sur les énergies renouvelables comme le solaire ou l’éolien ?</p>
+    
+      <h2>⚛️ L'énergie nucléaire : Puissante mais controversée</h2>
+      <p>Le nucléaire produit une grande quantité d'électricité avec peu d'émissions de CO₂. Il est donc vu comme un allié dans la lutte contre le réchauffement climatique. Avec l’émergence des <strong>SMR (Small Modular Reactors)</strong>, l’énergie nucléaire devient plus flexible et sécurisée.</p>
+    
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Nuclear_Power_Plant_Cattenom.jpg" alt="Centrale nucléaire moderne" />
+    
+      <p>Mais cette énergie reste <strong>controversée</strong> : déchets radioactifs, risques d'accidents, coût élevé de démantèlement. Malgré cela, plusieurs pays comme la France et la Chine continuent d’investir dans des centrales nouvelle génération.</p>
+    
+      <h2>🌱 Les énergies renouvelables : Propres mais intermittentes</h2>
+      <p>Le solaire, l’éolien, l’hydroélectricité ou encore la biomasse sont des sources <strong>inépuisables</strong> et sans émission directe de CO₂. Elles permettent une production décentralisée, proche des populations.</p>
+    
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Wind_Turbines_and_Solar_Panels.jpg" alt="Éoliennes et panneaux solaires" />
+    
+      <p>Mais ces énergies sont <strong>dépendantes des conditions météo</strong>, ce qui rend leur gestion plus complexe. Des solutions comme les batteries ou l'hydrogène sont explorées pour pallier cette intermittence.</p>
+    
+      <h2>⚖️ Que choisir ? Une complémentarité nécessaire</h2>
+      <p>Il ne s'agit pas de choisir l’un contre l’autre, mais plutôt de <strong>combiner intelligemment</strong> les deux approches. Le nucléaire peut assurer une base stable de production, tandis que les renouvelables apportent souplesse et durabilité.</p>
+    
+      <p><strong>Pour un avenir énergétique résilient</strong>, chaque pays doit adapter son mix selon ses ressources, ses priorités et sa capacité technologique.</p>
+    
+      <h2>🔍 Conclusion : Le futur est dans l’équilibre</h2>
+      <p>Le débat "Nucléaire vs Renouvelable" n'a pas une seule réponse. La vraie question est : <em>comment optimiser chaque source pour créer un système durable, sûr et accessible à tous ?</em></p>
+    
+      <p>Chez <strong>Oppama</strong>, nous croyons en une énergie propre, intelligente et accessible. Continuez à nous suivre pour plus d’analyses, d’actualités et de découvertes dans le domaine de l’énergie.</p>
+    
+      <div class="source">
+        <p>Sources : IAEA, IRENA, World Nuclear Association</p>
+      </div>
+    </section>
+      </div>
+  </div>
+  <div class="blog-container">
+  <div class="blog-header" onclick="toggleContent(this)">
+  <span class="blog-title">📈 L’évolution de la technologie nucléaire</span>
+  <span class="arrow">▶</span>
+  </div>
+  <div class="blog-content">
+  
+      <h2>Une technologie marquée par les grands conflits</h2>
+      <p>La technologie nucléaire a connu une avancée fulgurante pendant et après les grandes guerres mondiales. Dès 1945, les bombes d’Hiroshima et Nagasaki ont démontré la puissance destructrice de l’atome. Cependant, cette même puissance a aussi poussé les scientifiques à explorer ses applications pacifiques, en particulier dans la production d’électricité et la médecine.</p>
+      <img src="https://cdn.loc.gov/service/pnp/highsm/19800/19878/19878v.jpg" alt="Centrale nucléaire américaine avec tours de refroidissement - Library of Congress">
+
+      <h2>La transition vers des usages pacifiques</h2>
+      <p>Dès les années 1950, les programmes civils ont pris de l’ampleur, notamment avec la construction des premiers réacteurs nucléaires à des fins énergétiques. L’objectif : exploiter la fission nucléaire pour produire une énergie abondante, fiable et moins dépendante des combustibles fossiles.</p>
+      <img src="https://www.needpix.com/photo/download/1012050/nuclear-power-plant-energy-nuclear-power-atomic-energy-power-supply-nuclear-reactors-free-pictures-free-photos-free-images" alt="Vue sur une centrale nucléaire dans un paysage industriel">
+
+      <h2>Applications actuelles et innovations</h2>
+      <p>De nos jours, la technologie nucléaire ne se limite pas à la production d’électricité. Elle joue un rôle crucial dans la médecine (radiothérapie, imagerie), l’agriculture (irradiation des aliments), l’industrie (contrôle non destructif), et la recherche scientifique. Les petits réacteurs modulaires (SMR) promettent une révolution énergétique propre et accessible, même dans les régions isolées.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Nuclear_Reactor_Pressurized_Water_Reactor_French.png" alt="Schéma de fonctionnement d’un réacteur nucléaire à eau pressurisée">
+
+      <img src="https://www.goodfreephotos.com/albums/vector-images/nuclear-medicine-worker-vector-clipart.png" alt="Travailleur en médecine nucléaire - illustration vectorielle">
+
+      <h2>Conclusion</h2>
+      <p>L’évaluation de la technologie nucléaire ne peut se faire sans tenir compte de son passé militaire et de son potentiel pacifique. Aujourd’hui, elle représente une solution technologique mature, capable de répondre à des défis énergétiques et sanitaires majeurs, à condition d’être encadrée par une gouvernance rigoureuse et une culture de sûreté solide.</p>
+    </div>
+  </div>
+  </section>
+    </section>
+    <section id="subscribe">
+      <h2>S'abonner à la Newsletter</h2>
+      <form onsubmit="sendEmail(event)">
+        <input type="email" name="email" placeholder="Entrez votre email" required />
+        <button type="submit">S'abonner</button>
+      </form>
+    </section>
+    <div class="adsense">
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-XXXXXXXXXX"
+          data-ad-slot="1234567890"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section id="legal">
+      <h2>Mentions légales</h2>
+      <p class="legal">
+        <p><strong>Nom du site :</strong> Oppama</p>
+  <p><strong>Propriétaire :</strong> oppamaGO</p>
+  <p><strong>Adresse :</strong> Madagascar antananarivo</p>
+  <p><strong>Email de contact :</strong> <a href="oppamablog@gmail.com">oppamablog@gmail.com</a></p>
+  <hr>
+  <p><strong>Directeur de la publication :</strong> Mr andry Olivier</p>
+  
+  <hr>
+  <p><strong>Propriété intellectuelle :</strong><br>
+    Tous les contenus présents sur le site Oppama (textes, images, logos, etc.) sont la propriété exclusive de leur auteur sauf mention contraire.
+  </p>
+  <p><strong>Responsabilité :</strong><br>
+    Le propriétaire s’efforce de fournir des informations exactes mais ne garantit pas l’exactitude ou l’actualité des contenus.
+  </p>
+  <p><strong>Cookies :</strong><br>
+    Le site utilise des cookies à des fins statistiques. En naviguant, vous acceptez leur utilisation.
+  </p>
+  <p><strong>Données personnelles :</strong><br>
+    Les données collectées sont utilisées uniquement dans le cadre défini (abonnement, contact, etc.) et ne sont jamais partagées sans consentement.
+  </p>
+</section>
+    <section id="confidentialité">
+      <h2>Politique de confidentialité</h2>
+      <p>
+        <p>Cette politique de confidentialité décrit comment Oppama collecte, utilise et protège les données personnelles des utilisateurs.</p>
+        <strong>1. Données collectées</strong>
+        <p>Nous collectons les informations que vous fournissez via les formulaires (nom, adresse e-mail, etc.).</p>
+        <strong>2. Utilisation des données</strong>
+        <p>Les données sont utilisées uniquement pour :</p>
+        <ul>
+          <li>Répondre à vos messages</li>
+          <li>Envoyer des newsletters si vous y avez consenti</li>
+          <li>Statistiques de fréquentation (anonymes)</li>
+        </ul>
+        <strong>3. Conservation des données</strong>
+        <p>Les données sont conservées pour une durée maximale de 3 ans sauf demande de suppression.</p>
+        <strong>4. Partage des données</strong>
+        <p>Nous ne partageons vos données avec aucun tiers sans votre consentement explicite.</p>
+        <strong>5. Vos droits</strong>
+        <p>Conformément aux lois en vigueur, vous pouvez demander l’accès, la modification ou la suppression de vos données en nous écrivant à <a href="mailto:oppamablog@gmail.com">oppamablog@gmail.com</a>.</p>
+            </p>
+    </section>
+  </div>
+
+  <div id="lightbox"><img src="" alt="lightbox" onclick="closeLightbox()"/></div>
+
+  <footer>
+    <p>&copy; 2025 Oppama Blog. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("main-nav").classList.toggle("active");
+    }
+    document.querySelectorAll(".gallery-img").forEach(img => {
+      img.addEventListener("click", () => {
+        document.getElementById("lightbox").style.display = "flex";
+        document.querySelector("#lightbox img").src = img.src;
+      });
+    });
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+    function sendEmail(e) {
+      e.preventDefault();
+      const email = e.target.email.value;
+      emailjs.send("service_8s0cjg6", "template_y9hvpml", { email: email })
+        .then(() => alert("Merci pour votre abonnement !"))
+        .catch(() => alert("Erreur lors de l'envoi. Réessayez."));
+    }
+      // Menu mobile
+      function toggleMenu() {
+      document.getElementById("main-nav").classList.toggle("active");
+    }
+
+    
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+
+  
+function toggleContent(header) {
+  const content = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    arrow.classList.remove("rotate");
+  } else {
+    content.style.display = "block";
+    arrow.classList.add("rotate");
+  }
+}
+  </script>
+</body>
+</html>
